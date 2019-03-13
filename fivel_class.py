@@ -5,11 +5,25 @@ AGN given its lines ratio of the ions O[III] or N[II] with the ions
 O[II] or S[II].
 
 Usage:
-  Select one of the 
 
-Example:
->>> import fivel_class as f
->>> 
+  If the program runs from the main program, the user will be asked 
+  first of all for the pair of ions from (O[III] or N[II]) and
+  (S[II] or O[II]). Then, will be asked for the value of the lines 
+  ratio for the selected two ions.
+
+  Output:
+    Related to the narrow lines region:
+      Temperature in [K] and Density in [part cm^-3]
+  
+  Otherwise, if the program is called as a library the proccedure 
+  calling is 
+
+  >>> import fivel_class as f
+  >>> values = f.agn(J1=J1, J2=J2, ion1=ion1, ion2=ion2)
+  >>> Temperature, Density = values.fivel()
+  
+  where J1 stands for the lines ratio of the ion1 (either O[III] or 
+  N[II]) and J2 for the lines ratio of the ion2 (S[II] or O[II])
 
 
 Author: Angel Daniel Martinez Cifuentes
@@ -152,6 +166,7 @@ class agn:
 				T = self.ratio(J=self.J1,Ne=Ne,ion=self.ion1)
 				if self.show:
 					print("  Iteration {}\n Ne  {}\n T   {}\n".format(i+1,Ne,RES))
+			print(" Done!\n")
 			
 		###########################################################
 		
@@ -167,7 +182,8 @@ class agn:
 				Ne = ratio(J=J1,T=T,ion=ion1)
 				if show:
 					print("  Iteration {}\n Ne  {}\n T   {}\n".format(i+1,RES,T))
-		
+			print(" Done!\n")
+			
 		#Return Temperature and Density 
 		return T, Ne
 
@@ -176,6 +192,49 @@ class agn:
 
 if __name__=='__main__':
 
+	
+	print("---------------------------------\n")
+	print(" PROGRAM FIVEL - PYTHON-TEST\n")
+	i1 = float(input("  Type the number of the ion1\n    1:   O[III]\n\
+    2:   N[II]\n"))
+	if i1 == 1:
+		ion1 = 'OIII'
+	elif i1 == 2:
+		ion1 = 'NII'
+	else: 
+		print("Number not defined")
+		print("Exiting")
+		exit()
+
+	i2 = float(input("  Type the number of the ion2\n    1:   S[II]\n\
+    2:   O[II]\n"))
+	if i2 == 1:
+		ion2 = 'SII'
+	elif i2 == 2:
+		ion2 = 'OII'
+	else: 
+		print("Number not defined")
+		print("Exiting")
+		exit()
+	
+	print("  Input the lines ratio for the {} ion:  ".format(ion1))
+	J1 = float(input())
+	print("  Input the lines ratio for the {} ion:  ".format(ion2))
+	J2 = float(input())
+	
+	### NGC 3227
+	A = agn(J1=J1,J2=J2,ion1='OIII',ion2='SII',show=True)
+	T, Ne = A.fivel()
+	print("  Temperature  {}\n  Density      {}".format(T,Ne))
+	
+	
+	
+	
+	
+	
+	
+	
+	exit()
 	### NGC 3227
 	A = agn(J1=122.72,J2=1.36,ion1='OIII',ion2='SII')
 	T, Ne = A.fivel()
