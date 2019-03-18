@@ -32,4 +32,8 @@ The equation for the ion S[II] is:
 And for the O[II] ion is:
 
  ![oii](https://latex.codecogs.com/gif.latex?%5Cfrac%7Bj_%7B3726%7D%7D%7Bj_%7B3729%7D%7D%3D%5Cfrac%7B3A_%7B3726%7D%7D%7B2A_%7B3729%7D%7D%5Cleft%28%20%5Cfrac%7BN_e%20C&plus;1.60A_%7B3729%7D%7D%7BN_e%20C&plus;1.60A_%7B3726%7D%7D%20%5Cright%29)
+ 
+ 
+ Where the constants are given by
+ 
 
