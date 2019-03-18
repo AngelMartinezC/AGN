@@ -112,6 +112,8 @@ class agn:
 		
 
 		"""
+		  ### Lines ratio function
+	
 		  Function containing the lines ratio for a selected ion
 		  (O[III] or N[II] and S[II] or O[II]).
 		  
@@ -213,6 +215,8 @@ class agn:
 		
 		
 		"""
+		  ### Iteration Function
+		
 		  Function to iterate and find both the temperature and density from
 		  the above function ratio().
 		  
@@ -232,8 +236,11 @@ class agn:
 		  described above is done, just for this case the input parameter is
 		  a temperature of 10000 kelvin. 
 		  
+		  The number of iteration, independent of the initial values for Density
+		  and Temperature, will be less than 4 iterations.
+		  
 		  The final return of this function is the temperature and density as 
-		  a python tuple
+		  a python tuple in Kelvin and particles per cm3 respectively.
 		"""
 		
 		
@@ -306,8 +313,7 @@ if __name__=='__main__':
 	print("  Input the lines ratio for the {} ion:  ".format(ion2))
 	J2 = float(input())
 	
-	### NGC 3227
-	A = agn(J1=J1,J2=J2,ion1='OIII',ion2='SII',show=True)
+	A = agn(J1=J1,J2=J2,ion1=ion1,ion2=ion2,show=True)
 	T, Ne = A.fivel()
 	print("  Temperature  {}\n  Density      {}".format(T,Ne))
 	
@@ -319,6 +325,9 @@ if __name__=='__main__':
 	
 	
 	exit()
+	
+	# Some values for other AGN
+	
 	### NGC 3227
 	A = agn(J1=122.72,J2=1.36,ion1='OIII',ion2='SII')
 	T, Ne = A.fivel()
