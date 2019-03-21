@@ -6,7 +6,7 @@ The python script takes into account the values from Osterbrock, 2006
 
 The script is based on the one written by de Robertis, Dufour, & Hunt (fivel.f). The paper explaining the fivel program can be found at Journal of the Royal Astronomical Society of Canada (ISSN 0035-872X), vol. 81, Dec. 1987, p. 195-220
 
-There are two equations uesd to make the calculations, from ![2p2](https://latex.codecogs.com/gif.latex?2p%5E2)-like ions and ![2p3](https://latex.codecogs.com/gif.latex?2p%5E3)-like ions 
+There are two equations used to make the calculations, from ![2p2](https://latex.codecogs.com/gif.latex?2p%5E2)-like ions and ![2p3](https://latex.codecogs.com/gif.latex?2p%5E3)-like ions 
 
 ### Equations for ![2p2](https://latex.codecogs.com/gif.latex?2p%5E2)-like ions
 
