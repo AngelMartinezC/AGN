@@ -19,4 +19,9 @@ import os
 data = 'array.fit' #or in .fits format
 
 def read_fits(name):
-  array = 0
+  if isinstance(name,str):
+    array = fits.getdata(name,0)
+    header = fits.getheader(name,0)
+    return array, header
+  else:
+    return "Not valid"
