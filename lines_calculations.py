@@ -16,12 +16,28 @@ from astropy.io import fits
 import os
 
 
-data = 'array.fit' #or in .fits format
+name = 'example/spec-1070-52591-0072.fits'
 
 def read_fits(name):
   if isinstance(name,str):
     array = fits.getdata(name,0)
     header = fits.getheader(name,0)
-    return array, header
+    new_data = np.transpose(np.array([i for i in array]))
+    return new_data, header
   else:
     return "Not valid"
+
+
+hdudata, hduheader = read_fits(name)
+x_axis = 10**hdudata[1]    # Wavelength in log10(AA)
+y_axis = hdudata[0]        # Spectral flux
+
+
+plt.plot(x_axis,y_axis)
+plt.show()
+
+
+
+
+
+
