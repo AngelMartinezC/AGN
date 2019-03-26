@@ -35,3 +35,6 @@ And for the O[II] ion is:
 
 
 ## Graphs
+
+![2p2](2p2.png)
+![2p3](2p3.png)
