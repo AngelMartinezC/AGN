@@ -141,7 +141,7 @@ def ratio_approx(Ne,T):
 # Time for plots
 
 
-def plot2p2():
+def plot2p2(save=False):
 	T = np.linspace(1000,20000,1000000)
 	plt.title('2p$^{2}$-like elements')
 	plt.xlim(4000,20000)
@@ -153,6 +153,10 @@ def plot2p2():
 	plt.ylabel('Line ratio')
 	plt.legend()
 	plt.grid()
+	if save==True:
+		plt.savefig('2p2.png')
+	else:
+		pass
 	plt.show()
 
 
@@ -190,7 +194,7 @@ def ratio(Ne,T,ion='OII'):
 
 
 
-def plot2p3():
+def plot2p3(save=False):
 	Ne = np.linspace(1,1e6,1000000)
 	plt.title('2p$^{3}$-like elements')
 	plt.xlim(1,1e5)
@@ -200,11 +204,16 @@ def plot2p3():
 	plt.ylabel('Razón entre líneas')
 	plt.legend()
 	plt.grid()
+	if save==True:
+		plt.savefig('2p3.png')
+	else:
+		pass
 	plt.show()
 
 
 
-plot2p2()
+plot2p2(save=True)
+plot2p3(save=True)
 
 
 
