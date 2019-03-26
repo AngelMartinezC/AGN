@@ -51,9 +51,8 @@ class spectrum:
 		if self.header == True:
 			x_axis, y_axis, head = self.read(self.data,self.header)
 		else:
-			print("No header")
 			x_axis, y_axis = self.read(self.data,self.header)
-			
+		
 		plt.figure(figsize=(8,5))
 		plt.plot(x_axis,y_axis)
 		plt.grid()
@@ -63,13 +62,12 @@ class spectrum:
 
 
 	def limits(self,wavelength1,wavelength2,statistics=False,plot=False,ax=None,
-		show_model=False):
+		savefig=False,show_model=False):
 		
 		
 		if self.header == True:
 			x_axis, y_axis, head = self.read(self.data,self.header)
 		else:
-			print("No header")
 			x_axis, y_axis = self.read(self.data,self.header)
 		
 		
@@ -88,13 +86,16 @@ class spectrum:
 			if ax is None:
 				ax = plt.gca()
 			ax.plot(x_range,y_range+mini,'o-',label='Spectrum')
-
-			plt.plot(X,Y+mini,label='Gaussian function')
-			plt.plot(x_range,result.best_fit+mini,'o--',label='Gaussian Fit')
+			ax.plot(X,Y+mini,label='Gaussian function')
+			ax.plot(x_range,result.best_fit+mini,'o--',label='Gaussian Fit')
 			plt.ylabel(r'Flux $[10^{17}$ erg cm$^{-2}$ s$^{-1}$ $\AA^{-1}$]')
 			plt.xlabel(r'Wavelength [$\AA$]')
 			plt.legend()
 			plt.grid()
+			if savefig == True:
+				plt.savefig('gaussian.png')
+			else:
+				pass
 			plt.show()
 
 
@@ -142,16 +143,16 @@ class spectrum:
 			pass
 			
 		
-		if plot == False:
-			pass
+		if plot == True:
+			plot_fit(ax)
 		else:
-			plot_fit()
+			pass
 		
 		
-		if statistics == False:
-			pass
-		else:
+		if statistics == True:
 			statistics_fit()
+		else:
+			pass
 		
 		
 		if self.header == True:
@@ -168,8 +169,8 @@ if __name__=='__main__':
 	x1 = 6740
 	x2 = 6754
 
-	data = spectrum(data,header=True)
+	data = spectrum(data,header=False)
 	data.plot()
-	A=data.limits(x1,x2,statistics=True)
+	A=data.limits(x1,x2,statistics=True,plot=True,savefig=True)
 
 

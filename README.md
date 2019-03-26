@@ -38,3 +38,6 @@ And for the O[II] ion is:
 
 ![2p2](2p2.png)
 ![2p3](2p3.png)
+
+![gaussian](gaussian.png)
+
