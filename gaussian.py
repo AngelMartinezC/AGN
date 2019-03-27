@@ -169,9 +169,9 @@ class spectrum:
 		
 		
 		if self.header == True:
-			return result.best_fit,x_axis,y_axis,X,Y,head
+			return trapz(Y,X),result.best_fit,x_axis,y_axis,X,Y,head
 		else:
-			return result.best_fit,x_axis,y_axis,X,Y
+			return trapz(Y,X),result.best_fit,x_axis,y_axis,X,Y
 
 
 
@@ -184,6 +184,14 @@ if __name__=='__main__':
 
 	data = spectrum(data,header=False)
 	data.plot()
+<<<<<<< HEAD
 	A=data.limits(statistics=True,plot=True,savefig=True)
+=======
+	A=data.limits(x1,x2,statistics=True,plot=True,savefig=True)
+	print('Area    {}'.format(A[0]))
+	
+	
+	
+>>>>>>> 18119686fe7e8c586d3467344706a9a2b2ca6401
 
 
