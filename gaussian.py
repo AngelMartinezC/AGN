@@ -61,7 +61,7 @@ class spectrum:
 		plt.show()
 
 
-	def limits(self,wavelength1,wavelength2,statistics=False,plot=False,ax=None,
+	def limits(self,statistics=False,plot=False,ax=None,
 		savefig=False,show_model=False):
 		
 		
@@ -85,9 +85,9 @@ class spectrum:
 		def plot_fit(ax):
 			if ax is None:
 				ax = plt.gca()
-			ax.plot(x_range,y_range+mini,'o-',label='Spectrum')
-			ax.plot(X,Y+mini,label='Gaussian function')
-			ax.plot(x_range,result.best_fit+mini,'o--',label='Gaussian Fit')
+			ax.plot(x_range,y_range+mini,'o-',label='Spectrum',color='b')
+			ax.plot(X,Y+mini,'-',label='Gaussian function',color='red')
+			ax.plot(x_range,result.best_fit+mini,'o--',label='Gaussian Fit',color='y')
 			plt.ylabel(r'Flux $[10^{17}$ erg cm$^{-2}$ s$^{-1}$ $\AA^{-1}$]')
 			plt.xlabel(r'Wavelength [$\AA$]')
 			plt.legend()
@@ -113,16 +113,29 @@ class spectrum:
 			print("   Trapezoid:   {}\n   Simpson:     {}".format(trapz(Y,X), simps(Y,X)))
 			
 		
-		x1 = np.where(abs(x_axis-wavelength1+1) <= 1)[0][0]
-		x2 = np.where(abs(x_axis-wavelength2-2) <= 1)[0][0]
+		wavelength1 = 6734
+		wavelength2 = 6760
+		
+		xx1 = np.where(abs(x_axis-wavelength1+1) <= 1)[0][0]
+		xx2 = np.where(abs(x_axis-wavelength2-2) <= 1)[0][0]
+		
+		plt.plot(x_axis[xx1:xx2],y_axis[xx1:xx2],'o-',color='b')
+		print("Please click")
+		x = plt.ginput(2,show_clicks=True)
+		x01 = x[0][0]
+		x02 = x[1][0]
+		print(x01)
+		
+		x1 = np.where(abs(x_axis-x01+1) <= 1)[0][0]
+		x2 = np.where(abs(x_axis-x02-2) <= 1)[0][0]
 		
 		if y_axis[x1] <= y_axis[x2]:
 			mini = y_axis[x1]
 		else:
 			mini = y_axis[x2]
 
-		x_range = x_axis[x1-1:x2+1]
-		y_range = y_axis[x1-1:x2+1]-mini
+		x_range = x_axis[x1:x2]
+		y_range = y_axis[x1:x2]-mini
 
 		gmodel = Model(gaussian)
 		result = gmodel.fit(y_range,x=x_range,amp=1000,cen=x_range[0],wid=1.5)
@@ -130,7 +143,7 @@ class spectrum:
 		amp = result.best_values['amp']
 		cen = result.best_values['cen']
 		wid = result.best_values['wid']
-		X = np.linspace(x_range[0],x_range[-1],1000)
+		X = np.linspace(x_range[1],x_range[-2],1000)
 		Y = gaussian(X, amp=amp, cen=cen, wid=wid)
 		
 		
@@ -171,6 +184,6 @@ if __name__=='__main__':
 
 	data = spectrum(data,header=False)
 	data.plot()
-	A=data.limits(x1,x2,statistics=True,plot=True,savefig=True)
+	A=data.limits(statistics=True,plot=True,savefig=True)
 
 
