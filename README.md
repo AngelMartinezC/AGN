@@ -2,8 +2,7 @@
 Codes to calculate Temperature [K] and Density [particle/cm^3] from the lines ratio of certain ions in the narrow line region of a given AGN. 
 
 The python script takes the values for Einstein Coefficients, collision strength, and statistical weights from [Osterbrock, 2006](http://adsabs.harvard.edu/abs/2006agna.book.....O).
-The script is based on the one written by de Robertis, Dufour, & Hunt (fivel.f). The paper explaining the fivel program can be found at [Journal of the Royal Astronomical Society of Canada](http://adsabs.harvard.edu/abs/1987JRASC..81..195D).
-
+The script is based on the one written by de Robertis, Dufour, & Hunt (fivel.f). The paper explaining the fivel program can be found at [Journal of the Royal Astronomical Society of Canada](http://adsabs.harvard.edu/abs/1987JRASC..81..195D). The script can also be taken from [this repository](https://github.com/moustakas/impro/blob/master/pro/hiiregions/fivel/fivel.f).
 ### Requirements:
 
   - [lmfit](https://github.com/lmfit/lmfit-py), Non-Linear Least-Squares Minimization and Curve-Fitting for Python 
