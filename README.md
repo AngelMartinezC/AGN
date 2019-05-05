@@ -10,7 +10,7 @@ The script is based on the one written by de Robertis, Dufour, & Hunt (fivel.f).
   - [astropy](https://github.com/astropy/astropy), To read FITS files
   - [scipy](https://github.com/scipy/scipy) and [numpy](https://github.com/numpy/numpy), Scientific computing packages
   - [matplotlib](https://github.com/matplotlib/matplotlib), The Python plotting library  
-  - [gaussian](https://github.com/AngelMartinezC/AGN/) and [gaussian](https://github.com/AngelMartinezC/AGN/),  For graphics and show graphics (must be ran within the same path - in Development)
+  - [gaussian](https://github.com/AngelMartinezC/AGN/) and [fivel](https://github.com/AngelMartinezC/AGN/),  For graphics and show graphics (must be ran within the same path - in Development)
 
 ---
 ## Lines_ratio
