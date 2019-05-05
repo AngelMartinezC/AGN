@@ -288,7 +288,7 @@ if __name__=='__main__':
 	
 	print("---------------------------------\n")
 	print(" PROGRAM FIVEL - PYTHON-TEST\n")
-	i1 = float(input("  Type the number of the ion1\n    1:   O[III]\n2:   N[II]\n"))
+	i1 = float(input("  Type the number of the ion1\n    1:   O[III]\n    2:   N[II]\n"))
 	if i1 == 1:
 		ion1 = 'OIII'
 	elif i1 == 2:
@@ -298,7 +298,7 @@ if __name__=='__main__':
 		print("Exiting")
 		exit()
 
-	i2 = float(input("  Type the number of the ion2\n    1:   S[II]\n2:   O[II]\n"))
+	i2 = float(input("  Type the number of the ion2\n    1:   S[II]\n    2:   O[II]\n"))
 	if i2 == 1:
 		ion2 = 'SII'
 	elif i2 == 2:
