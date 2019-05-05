@@ -36,8 +36,8 @@ And for the O[II] ion is:
 
 ## Graphs
 
-![2p2](2p2.png)
-![2p3](2p3.png)
+![2p2](plots/2p2.png)
+![2p3](plots/2p3.png)
 
-![gaussian](gaussian.png)
+![gaussian](plots/1gaussian.png)
 
