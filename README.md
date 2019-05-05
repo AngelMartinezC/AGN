@@ -4,6 +4,14 @@ Codes to calculate Temperature [K] and Density [particle/cm^3] from the lines ra
 The python script takes the values for Einstein Coefficients, collision strength, and statistical weights from [Osterbrock, 2006](http://adsabs.harvard.edu/abs/2006agna.book.....O).
 The script is based on the one written by de Robertis, Dufour, & Hunt (fivel.f). The paper explaining the fivel program can be found at [Journal of the Royal Astronomical Society of Canada](http://adsabs.harvard.edu/abs/1987JRASC..81..195D).
 
+### Requirements:
+
+  - [lmfit](https://github.com/lmfit/lmfit-py), Non-Linear Least-Squares Minimization and Curve-Fitting for Python 
+  - [astropy](https://github.com/astropy/astropy), To read FITS files
+  - [scipy](https://github.com/scipy/scipy) and [numpy](https://github.com/numpy/numpy), Scientific computing packages
+  - [matplotlib](https://github.com/matplotlib/matplotlib), The Python plotting library  
+  - [gaussian](https://github.com/AngelMartinezC/AGN/) and [gaussian](https://github.com/AngelMartinezC/AGN/),  For graphics and show graphics (must be ran within the same path - in Development)
+
 ---
 ## Lines_ratio
 
