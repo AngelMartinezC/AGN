@@ -1,5 +1,6 @@
 # AGN
-Codes to calculate Temperature and Density from the lines ratio of certain ions in the narrow line region of a given AGN
+Codes to calculate Temperature `[K]` and Density [particle/cm^3] from the lines ratio of certain ions in the narrow line region of a given AGN.
+
 
 The python script takes into account the values from Osterbrock, 2006 
 
