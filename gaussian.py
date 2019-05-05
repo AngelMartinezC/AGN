@@ -207,7 +207,7 @@ class spectrum:
 
 if __name__=='__main__':
 
-	data = '../data/spec-1070-52591-0072.fits'
+	data = 'data/spec-1070-52591-0072.fits'
 	
 	def message():
 		print('-------------------------------------------------------')
