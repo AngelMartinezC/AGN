@@ -16,13 +16,12 @@ Needed packages:
   - scipy:       For integration    -  https://github.com/scipy/scipy
   - numpy        Numerical Python   -  https://github.com/numpy/numpy
   - matplotlib   Plotting library   -  https://github.com/matplotlib/matplotlib
-
   - gaussian     For graphics          (same path)
   - fivel        To make iterations    (same path)
 
+
 Usage:
 ------
-
   If the program is called as a module, the calling proccedure is like:
   
   >>> import lines_ratio as lr
