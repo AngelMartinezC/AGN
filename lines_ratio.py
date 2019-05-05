@@ -1,20 +1,39 @@
 #-*- coding:utf-8
 
 """
-  # Lines ratio
-  Code to calculate Temperature [K] and particle density [part cm^-3] 
-  from a given fits data set from.
+Lines ratio
+===========
+
+  Code to calculate Temperature [K] and particle density [part cm^-3] from a 
+  given fits data set from SSDS (Sloan Digital Sky Survey)
+
+
+Needed packages:
+----------------
+
+  - lmfit:       For Gaussian fit   -  https://github.com/lmfit/lmfit-py
+  - astropy:     To read Fits file  -  https://github.com/astropy/astropy
+  - scipy:       For integration    -  https://github.com/scipy/scipy
+  - numpy        Numerical Python   -  https://github.com/numpy/numpy
+  - matplotlib   Plotting library   -  https://github.com/matplotlib/matplotlib
+
+  - gaussian     For graphics          (same path)
+  - fivel        To make iterations    (same path)
+
+Usage:
+------
+
+  If the program is called as a module, the calling proccedure is like:
   
-  ## Needed packages:
+  >>> import lines_ratio as lr
+  >>>
+  >>> name = 'some .fits file'
+  >>> T,Ne = lr.calculation(name)
   
-  >>> lmfit:     For Gaussian fit   -  https://github.com/lmfit/lmfit-py
-  >>> astropy:   To read Fits file  -  https://github.com/astropy/astropy
-  >>> scipy:     For integration    -  https://github.com/scipy/scipy
-  >>> numpy
-  >>> matplotlib
-  
-  
-  ## Usage:
+  The user will be asked for the ions to make the calculations if they are
+  not specified. Avaliable ions are (O[III] or N[II]) and (S[II] or O[II])
+  It returns T and Ne, the temperature and particle density in [K] and
+  [part cm^-3] respectively of the narrow line region from an AGN.
   
   
 """
@@ -87,6 +106,9 @@ def calculation(name=None, ion1=None, ion2=None, statistics=False, header=False,
 	
 	return T, Ne
 	
+
+
+
 
 
 if __name__=='__main__':
