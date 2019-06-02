@@ -41,7 +41,7 @@ from gaussian import spectrum
 from fivel import agn
 
 
-def calculation(name=None, ion1=None, ion2=None, statistics=False, header=False, plot=True, savefig=False, ax=None, show_model=False, iteration=True, plot_spectrum=False,**kwargs):
+def calculation(name=None, ion1=None, ion2=None, statistics=False, header=False, plot=True, savefig=False, ax=None, show_model=False, iteration=True, plot_spectrum=False,z = 0.00420765,**kwargs):
 	
 	
 	if not name:
@@ -86,7 +86,7 @@ def calculation(name=None, ion1=None, ion2=None, statistics=False, header=False,
 			print("Exiting")
 			exit()
 	
-	data = spectrum(data=name,header=header)
+	data = spectrum(data=name,header=header,z=z)
 	
 	if plot_spectrum is True:
 		data.plot()
@@ -113,7 +113,9 @@ def calculation(name=None, ion1=None, ion2=None, statistics=False, header=False,
 if __name__=='__main__':
 	
 	name = 'data/spec-1070-52591-0072.fits'
+	z = 0.00420765
+	#name = 'data/spec-1369-53089-0157.fits'
 	
-	T, Ne = calculation(name)
+	T, Ne = calculation(name,z=z)
 	print("  Temperature  {}\n  Density      {}".format(T,Ne))
 
