@@ -1,9 +1,9 @@
-# AGN
+# AGN (in development)
 Codes to calculate Temperature [K] and Density [particle/cm^3] from the lines ratio of certain ions in the narrow line region of a given AGN. 
 
 The python script takes the values for Einstein Coefficients, collision strength, and statistical weights from [Osterbrock, 2006](http://adsabs.harvard.edu/abs/2006agna.book.....O).
 The script is based on the one written by de Robertis, Dufour, & Hunt (fivel.f). The paper explaining the fivel program can be found at [Journal of the Royal Astronomical Society of Canada](http://adsabs.harvard.edu/abs/1987JRASC..81..195D). The script can also be taken from [this repository](https://github.com/moustakas/impro/blob/master/pro/hiiregions/fivel/fivel.f).
-### Requirements:
+### Needed packages:
 
   - [lmfit](https://github.com/lmfit/lmfit-py), Non-Linear Least-Squares Minimization and Curve-Fitting for Python 
   - [astropy](https://github.com/astropy/astropy), To read FITS files
@@ -24,7 +24,7 @@ The script is based on the one written by de Robertis, Dufour, & Hunt (fivel.f).
   
   print("  Temperature  {}\n  Density      {}".format(T,Ne))
   ```
-  Here the user will be ased for the ions to make the calculations if they are not specified. Avaliable ions are (O[III] or N[II]) and (S[II] or O[II]) (see Ions example below).  It returns T and Ne, the temperature and particle density in [K] and [particle/cm^3] respectively, of the narrow line region from an AGN.
+  Here the user will be ased for the ions to make the calculations if they are not specified. Svailable ions are (O[III] or N[II]) and (S[II] or O[II]) (see Ions example below).  It returns T and Ne, the temperature and particle density in [K] and [particle/cm^3] respectively, of the narrow line region from an AGN.
 
   **Note:** As the `lines_ratio` uses `gaussian.py` and `fivel.py` programs (both on this tree), for the moment the three programs must to be on the same folder.
 
@@ -34,7 +34,7 @@ The script is based on the one written by de Robertis, Dufour, & Hunt (fivel.f).
   Name of the .fits file. The file should be obtained from the [Sloan Digital Sky Survey (SDSS) Catalogue](https://dr15.sdss.org/optical/spectrum/search). In the catalogue, the user will provide either the Plate, MJD and FiberID, or the coordinates of the AGN.
 
 * ***ion1 ion2*** (default=`None`)   
-  Ions in which the calculations will be performed. If not set, then the user will be asked for the avaliable ions to begin with. Avaliable ions are: O[III] or N[II] for ![2p2](https://latex.codecogs.com/gif.latex?2p%5E2)-like ions  and S[II] or O[II] for ![2p3](https://latex.codecogs.com/gif.latex?2p%5E3)-like ions. More ions will be added.
+  Ions in which the calculations will be performed. If not set, then the user will be asked for the available ions to begin with. Svailable ions are: O[III] or N[II] for ![2p2](https://latex.codecogs.com/gif.latex?2p%5E2)-like ions  and S[II] or O[II] for ![2p3](https://latex.codecogs.com/gif.latex?2p%5E3)-like ions. More ions will be added.
 
 * ***statistics*** (default=`False`)   
   If set to `True`, then it will display on the screen some information of the region of calculation, like the maximum and minimum values of wavelenght and fluxes, the Equivalent Width (as of URL) and area under the flux given by the Trapezoid and Simpson methods.
