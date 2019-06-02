@@ -21,26 +21,34 @@ from scipy.integrate import trapz, simps
 class spectrum:
 	
 	
-	def __init__(self,data,header=False):
+	def __init__(self,data,header=False,z=None):
 		
 		self.data = data
 		self.header = header
+		self.z = z
 	
 	
-	def read(self,data,header):
+	def read(self,data,header,z=None):
 		
 		if isinstance(data,str):
-			array = fits.getdata(self.data,0)
-			x, y = [], []  #Wavelength and flux
-			for i in range(len(array)):
-				y.append(array[i][0])
-				x.append(10**array[i][1])	
-				
-			if header == True:
-				header = fits.getheader(data,0)
-				return np.array(x), np.array(y), header
+			if z is None:
+				print('Provide a Redshift')
+				print('Exit')
+				exit()
 			else:
-				return np.array(x), np.array(y)
+				array = fits.getdata(self.data,0)
+				x, y = [], []  #Wavelength and flux
+				for i in range(len(array)):
+					y.append(array[i][0])
+					x.append(10**array[i][1])
+				x = np.array(x)
+				y = np.array(y)
+				xnew = x/(z+1)
+				if header == True:
+					header = fits.getheader(data,0)
+					return xnew, y, header
+				else:
+					return xnew, y
 		else:
 			print('Not valid dataset ... Abort')
 			exit()
@@ -65,10 +73,11 @@ class spectrum:
 		savefig=False,show_model=False):
 		
 		
+		
 		if self.header == True:
-			x_axis, y_axis, head = self.read(self.data,self.header)
+			x_axis, y_axis, head = self.read(self.data,self.header,self.z)
 		else:
-			x_axis, y_axis = self.read(self.data,self.header)
+			x_axis, y_axis = self.read(self.data,self.header,self.z)
 		
 		
 		def gaussian(x, amp, cen, wid):
@@ -126,8 +135,11 @@ class spectrum:
 			
 			xx1 = np.where(abs(x_axis-wavelength1+1) <= 1)[0][0]
 			xx2 = np.where(abs(x_axis-wavelength2-2) <= 1)[0][0]
+			#maxvaly = max(y_axis[xx1:xx2])
+			#maxvalx = np.where(y_axis == maxvaly)[0][0]
+			#print(maxvalx)
 			plt.plot(x_axis[xx1:xx2],y_axis[xx1:xx2],'o-',color='b',label=legend)
-			plt.axvline(x=line,linewidth=3,alpha=0.7)
+			#plt.axvline(x=maxvalx,linewidth=3,alpha=0.7)
 			plt.ylabel(r'Flux $[10^{17}$ erg cm$^{-2}$ s$^{-1}$ $\AA^{-1}$]')
 			plt.xlabel(r'Wavelength [$\AA$]')
 			plt.grid()
@@ -140,10 +152,11 @@ class spectrum:
 		
 		
 		def lines(num=4):
-
-			waves = [[6734,6760,'S[II]: 6716$\AA$',6746.8],[6750,6780,'S[II]: 6731$\AA$',6760.8],
-			[4366,4393,'O[III]: 4363$\AA$',4382.4],[4962,4995,'O[III]: 4959$\AA$',4982.0],
-			[5012,5050,'O[III]: 5007$\AA$',5030.3]]
+			
+			# Set the limit to show the plot for the selected ions
+			waves = [[6706,6732,'S[II]: 6716$\AA$',6718],[6723,6742,'S[II]: 6731$\AA$',6732],
+			[4354,4372,'O[III]: 4363$\AA$',4365],[4954,4970,'O[III]: 4959$\AA$',4982.0],
+			[5002,5013,'O[III]: 5007$\AA$',5030.3]]
 			
 			x01, x02 = windows(x_axis=x_axis,y_axis=y_axis,wavelength1=waves[num][0],
 			wavelength2=waves[num][1],legend=waves[num][2],line=waves[num][3])
@@ -220,7 +233,7 @@ if __name__=='__main__':
 	
 	message()
 	
-	data = spectrum(data,header=False)
+	data = spectrum(data,header=False,z = 0.00420765)
 	#data.plot()
 	A=data.limits(statistics=False,plot=True,savefig=False)
 	print('\n Area\n  6716:   {0:.3f}\n  6731:   {1:.3f}\
