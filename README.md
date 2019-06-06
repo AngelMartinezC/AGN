@@ -9,7 +9,7 @@ The script is based on the one written by de Robertis, Dufour, & Hunt (fivel.f).
   - [astropy](https://github.com/astropy/astropy), To read FITS files
   - [scipy](https://github.com/scipy/scipy) and [numpy](https://github.com/numpy/numpy), Scientific computing packages
   - [matplotlib](https://github.com/matplotlib/matplotlib), The Python plotting library  
-  - [gaussian](https://github.com/AngelMartinezC/AGN/) and [fivel](https://github.com/AngelMartinezC/AGN/),  For graphics and show graphics (must be ran within the same path - in Development)
+  - [agn](https://github.com/AngelMartinezC/AGN/),  For graphics and show graphics (must be ran within the same path - in Development)
 
 ---
 ## Lines_ratio
@@ -18,10 +18,19 @@ The script is based on the one written by de Robertis, Dufour, & Hunt (fivel.f).
 
   If the program is called as a python module, the calling proccedure is like:
   ```python
-  import lines_ratio as lr
+  import agn 
   name = 'data/spec-1070-52591-0072.fits' #Example of .fits data
-  T, Ne = lr.calculation(name=name)
+  z = 0.00420765  #Redshift related to name fits
   
+  T, Ne = agn.calculation(name,z=z)
+  
+  #or
+  
+  T, Ne = calculation(name,z=z,ion1='OIII',ion2='SII')
+  
+  #or if the user do not want the iteration proccess
+  
+  T, Ne = calculation(name,z=z,ion1='OIII',ion2='SII',iteration=False)
   print("  Temperature  {}\n  Density      {}".format(T,Ne))
   ```
   Here the user will be ased for the ions to make the calculations if they are not specified. Svailable ions are (O[III] or N[II]) and (S[II] or O[II]) (see Ions example below).  It returns T and Ne, the temperature and particle density in [K] and [particle/cm^3] respectively, of the narrow line region from an AGN.
