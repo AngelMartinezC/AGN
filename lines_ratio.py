@@ -37,8 +37,8 @@ Usage:
   
 """
 
-from gaussian import spectrum
-from fivel import agn
+from agn import spectrum
+from agn import agn
 
 
 def calculation(name=None, ion1=None, ion2=None, statistics=False, header=False, plot=True, savefig=False, ax=None, show_model=False, iteration=True, plot_spectrum=False,z = 0.00420765,**kwargs):
