@@ -42,9 +42,12 @@ The script is based on the one written by de Robertis, Dufour, & Hunt (fivel.f).
 * ***name:***   
   Name of the .fits file. The file should be obtained from the [Sloan Digital Sky Survey (SDSS) Catalogue](https://dr15.sdss.org/optical/spectrum/search). In the catalogue, the user will provide either the Plate, MJD and FiberID, or the coordinates of the AGN.
 
+* ***z*** 
+  Redshift. Necessary to center each emission line on the plots
+
 * ***ion1 ion2*** (default=`None`)   
   Ions in which the calculations will be performed. If not set, then the user will be asked for the available ions to begin with. Svailable ions are: O[III] or N[II] for ![2p2](https://latex.codecogs.com/gif.latex?2p%5E2)-like ions  and S[II] or O[II] for ![2p3](https://latex.codecogs.com/gif.latex?2p%5E3)-like ions. More ions will be added.
-
+  
 * ***statistics*** (default=`False`)   
   If set to `True`, then it will display on the screen some information of the region of calculation, like the maximum and minimum values of wavelenght and fluxes, the Equivalent Width (as of URL) and area under the flux given by the Trapezoid and Simpson methods.
 
@@ -61,7 +64,7 @@ The script is based on the one written by de Robertis, Dufour, & Hunt (fivel.f).
   Is `True`, it will display the residuals, gaussian fit, area and best fit. In this scope, every time the user selects the two points of interest (of integration), a new window will appear on the screen. In order to close it and pass the next figure, the user will have to first clic on the graph (so the window will disappear) and then close the graph. (in Development)
 
 * ***iteration*** (dafalut=`True`)   
-  Shows the iterations done by the `fivel.py` program.
+  Shows the iterations done by the `agn.fivel` class.
 
 * ***plot_spectrum*** (default=`False`)   
   Plots the initial spectrum
